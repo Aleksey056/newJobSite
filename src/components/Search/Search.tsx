@@ -1,35 +1,32 @@
 import { Box, Text, TextInput, Button } from '@mantine/core';
-import styles from './Search.module.css';
-import { useState, type FormEvent } from 'react';
+// import styles from './Search.module.css';
+import { useState } from 'react';
+import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
+import { setFilters } from '../../store/vacancySlice';
 
-type SeachtType = {
-	searchText: string,
-	setSearchText: (text: string) => void,
-}
+const Search = () => {
+	const dispatch = useTypedDispatch()
+	const { searchText } = useTypedSelector(state => state.vacancy)
+	const [text, setText] = useState(searchText)
 
-const Search: React.FC<SeachtType> = ({ searchText, setSearchText }) => {
-
-	const [value, setValue] = useState(searchText)
-
-	const handleSubmit = (event: FormEvent) => {
-		event.preventDefault()
-		setSearchText(value)
+	const setSearchText = (text: string) => {
+		dispatch(setFilters({ searchText: text }))
 	}
 
 	return (
 		<Box>
 			<Text>Список вакансий по профессии Frontend-разработчик</Text>
-			<form onSubmit={handleSubmit}>
+			<Box>
 				<TextInput
 					placeholder='Должность или название компании'
-					value={value}
-					onChange={(e) => setValue(e.target.value)}
+					value={text}
+					onChange={(e) => setText(e.target.value)}
 				>
 				</TextInput>
-				<Button type='submit'>
+				<Button type='submit' onClick={() => setSearchText(text)}>
 					Найти
 				</Button>
-			</form>
+			</Box>
 		</Box >
 	)
 };

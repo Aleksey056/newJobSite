@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 type vacancyFetchType = {
@@ -24,8 +24,8 @@ export const vacancyFetch = createAsyncThunk(
 			if (searchSkills.length) param.append('skill_set', searchSkills.join(','))
 
 			const url = `https://api.hh.ru/vacancies?${param.toString()}`
-			const response = await fetch(url);
 
+			const response = await fetch(url);
 			if (!response.ok) {
 				throw new Error('Ошибка при получении данных с HH')
 			}
@@ -43,6 +43,7 @@ type initialStateType = {
 	items: [],
 	status: string,
 	error: null | string,
+	currentPage: number,
 	filters: {
 		searchText: string,
 		searchCity: string,
@@ -55,6 +56,7 @@ const initialState: initialStateType = {
 	items: [],
 	status: 'idle',
 	error: null,
+	currentPage: 1,
 	filters: {
 		searchText: '',
 		searchCity: '',
@@ -65,7 +67,15 @@ const initialState: initialStateType = {
 const vacancySlice = createSlice({
 	name: 'vacancy',
 	initialState,
-	reducers: {},
+	reducers: {
+		setCurrentPage(state, action: PayloadAction<number>) {
+			state.currentPage = action.payload
+		},
+		setFilters(state, action) {
+			state.filters = { ...state.filters, ...action.payload }
+			state.currentPage = 1
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(vacancyFetch.pending, (state) => {
@@ -83,5 +93,5 @@ const vacancySlice = createSlice({
 	}
 })
 
-export const { } = vacancySlice.actions
+export const { setFilters, setCurrentPage } = vacancySlice.actions
 export default vacancySlice.reducer
