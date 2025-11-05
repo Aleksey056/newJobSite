@@ -6,7 +6,8 @@ import { setFilters } from '../../store/vacancySlice';
 
 const Search = () => {
 	const dispatch = useTypedDispatch()
-	const { searchText } = useTypedSelector(state => state.vacancy)
+	const { filters } = useTypedSelector(state => state.vacancy)
+	const searchText = filters.searchText
 	const [text, setText] = useState(searchText)
 
 	const setSearchText = (text: string) => {

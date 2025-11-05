@@ -12,7 +12,8 @@ const cityData = [
 
 const CitySelect = () => {
 	const dispatch = useTypedDispatch()
-	const { searchCity } = useTypedSelector(state => state.vacancy)
+	const { filters } = useTypedSelector(state => state.vacancy)
+	const searchCity = filters.searchCity
 	const setSearchCity = (city: string) => {
 		dispatch(setFilters({ searchCity: city }))
 	}
