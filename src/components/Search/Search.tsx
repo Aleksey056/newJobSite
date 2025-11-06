@@ -1,8 +1,9 @@
-import { Box, Text, TextInput, Button } from '@mantine/core';
-// import styles from './Search.module.css';
+import { Box, Text, TextInput, Button, Image } from '@mantine/core';
+import styles from './Search.module.css';
 import { useState } from 'react';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { setFilters } from '../../store/vacancySlice';
+import iconSearch from '../../assets/search.svg'
 
 const Search = () => {
 	const dispatch = useTypedDispatch()
@@ -14,17 +15,30 @@ const Search = () => {
 		dispatch(setFilters({ searchText: text }))
 	}
 
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Enter') {
+			setSearchText(text);
+		}
+	};
+
 	return (
-		<Box>
-			<Text>Список вакансий по профессии Frontend-разработчик</Text>
-			<Box>
+		<Box className={styles.section1}>
+			<Box className={styles.section1__title}>
+				<Text className={styles.section1__text1}>Список вакансий</Text>
+				<Text className={styles.section1__text2}> по профессии Frontend-разработчик</Text>
+			</Box>
+
+			<Box className={styles.section1__search}>
 				<TextInput
+					radius='md'
 					placeholder='Должность или название компании'
 					value={text}
 					onChange={(e) => setText(e.target.value)}
-				>
-				</TextInput>
-				<Button type='submit' onClick={() => setSearchText(text)}>
+					className={styles.search__input}
+					onKeyDown={handleKeyDown}
+					leftSection={<Image src={iconSearch} className={styles.iconSearch} />}
+				/>
+				<Button type='submit' onClick={() => setSearchText(text)} className={styles.section1__button}>
 					Найти
 				</Button>
 			</Box>

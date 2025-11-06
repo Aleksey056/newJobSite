@@ -1,5 +1,5 @@
 import { Box, Button, Group, Pill, PillsInput, Text, TextInput } from '@mantine/core';
-// import styles from './Skils.module.css';
+import styles from './Skills.module.css';
 import { setFilters } from '../../store/vacancySlice';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { useState } from 'react';
@@ -33,8 +33,8 @@ const Skills = () => {
 	};
 
 	return (
-		<Box>
-			<Text>Ключевые навыки</Text>
+		<Box className={styles.moduleSkils}>
+			<Text className={styles.title}>Ключевые навыки</Text>
 			<Group>
 				<TextInput
 					radius="md"
@@ -45,9 +45,7 @@ const Skills = () => {
 					onChange={(e) => setInputValue(e.currentTarget.value)}
 					onKeyDown={handleKeyDown}>
 				</TextInput>
-				<Button onClick={addSkills}>
-					+
-				</Button>
+				<Button onClick={addSkills} className={styles.button} />
 			</Group>
 
 			<PillsInput variant="unstyled" >

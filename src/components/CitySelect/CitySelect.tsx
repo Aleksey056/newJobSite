@@ -18,6 +18,7 @@ const CitySelect = () => {
 
 	const setSearchCity = (city: string | null) => {
 		dispatch(setFilters({ searchCity: city }))
+		dispatch(setFilters({ searchText: '' }))
 	}
 
 	return (
@@ -25,9 +26,6 @@ const CitySelect = () => {
 			leftSection={
 				<Image
 					src={iconCitySelect}
-					w={16}
-					h='auto'
-					fit="contain"
 					className={styles.iconCitySelect}
 				/>}
 			placeholder="Выберете вариант"

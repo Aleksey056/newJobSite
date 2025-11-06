@@ -4,7 +4,7 @@ import '@mantine/core/styles.css';
 import Header from './components/Header/Header'
 import Search from './components/Search/Search'
 import CitySelect from './components/CitySelect/CitySelect';
-import Skills from './components/Skils/Skils';
+import Skills from './components/Skils/Skills';
 import VacancyList from './components/VacancyList/VacancyList';
 
 function App() {

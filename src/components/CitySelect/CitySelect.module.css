@@ -7,5 +7,7 @@
 }
 
 .iconCitySelect {
-	size: 16px;
+	height: 16px;
+	width: auto;
+	border-radius: 4px solid black;
 }
