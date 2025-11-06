@@ -81,16 +81,17 @@ const vacancySlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(vacancyFetch.pending, (state) => {
-				state.status = 'loading';
-				state.error = null;
+				state.status = 'loading'
+				state.error = null
 			})
 			.addCase(vacancyFetch.fulfilled, (state, action) => {
-				state.items = action.payload;
-				state.status = 'succeeded';
+				state.items = action.payload.items
+				state.totalPages = action.payload.pages
+				state.status = 'succeeded'
 			})
 			.addCase(vacancyFetch.rejected, (state, action) => {
-				state.status = 'failed';
-				state.error = action.error.message || 'Ошибка в запросе данных с сервера';
+				state.status = 'failed'
+				state.error = action.error.message || 'Ошибка в запросе данных с сервера'
 			})
 	}
 })

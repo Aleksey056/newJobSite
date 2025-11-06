@@ -20,9 +20,7 @@ export type Vacancy = {
 	alternate_url: string;
 }
 
-// const ITEMS_PER_PAGE = 10;
-
-const VacancyList: React.FC = () => {
+const VacancyList = () => {
 	const dispatch = useTypedDispatch()
 	const { items, status, error, totalPages, currentPage, filters } = useTypedSelector(state => state.vacancy);
 
