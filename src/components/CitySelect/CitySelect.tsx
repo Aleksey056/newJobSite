@@ -1,7 +1,8 @@
-import { Select } from '@mantine/core';
+import { Image, Select } from '@mantine/core';
 import { setFilters } from '../../store/vacancySlice';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
-// import styles from './CitySelect.module.css';
+import styles from './CitySelect.module.css';
+import iconCitySelect from '../../assets/Vector.svg'
 
 const cityData = [
 	{ value: '', label: 'Все города' },
@@ -21,10 +22,19 @@ const CitySelect = () => {
 
 	return (
 		<Select
+			leftSection={
+				<Image
+					src={iconCitySelect}
+					w={16}
+					h='auto'
+					fit="contain"
+					className={styles.iconCitySelect}
+				/>}
 			placeholder="Выберете вариант"
 			data={cityData}
 			value={searchCity}
 			onChange={setSearchCity}
+			className={styles.moduleCitySelector}
 		/>
 	);
 };
