@@ -18,9 +18,6 @@ const VacancyList = () => {
 		dispatch(setCurrentPage(page));
 	};
 
-	console.log(items);
-
-
 	return (
 		<Box className={styles.moduleVacancyList}>
 			{status === 'loading' && <Loader color='cyan' size="xl" type="dots" />}
