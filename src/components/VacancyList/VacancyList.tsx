@@ -17,6 +17,9 @@ const VacancyList = () => {
 		dispatch(setCurrentPage(page));
 	};
 
+	console.log(items);
+
+
 	return (
 		<Box>
 			{status === 'loading' && <Loader color='cyan' size="xl" type="dots" />}

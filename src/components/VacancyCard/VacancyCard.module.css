@@ -21,6 +21,7 @@
 .head__total {
 	display: flex;
 	gap: 16px;
+	align-items: center;
 }
 
 .total__experience {
