@@ -43,6 +43,7 @@ type initialStateType = {
 	items: [],
 	status: string,
 	error: null | string,
+	totalPages: number,
 	currentPage: number,
 	filters: {
 		searchText: string,
@@ -56,6 +57,7 @@ const initialState: initialStateType = {
 	items: [],
 	status: 'idle',
 	error: null,
+	totalPages: 0,
 	currentPage: 1,
 	filters: {
 		searchText: '',

@@ -1,30 +1,63 @@
 import { useEffect } from 'react';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
-import { vacancyFetch } from '../../store/vacancySlice';
+import { vacancyFetch, setCurrentPage } from '../../store/vacancySlice';
+import { Box, Loader, Pagination, Text } from '@mantine/core';
+import CardVacancy from '../VacancyCard/VacancyCard';
+
+export type WorkFormat = {
+	id: string | number;
+	name: string;
+}
+
+export type Vacancy = {
+	id: string | number;
+	name: string;
+	salary: | string | { from?: number; to?: number; currency?: string } | null;
+	experience: string | { name: string } | null;
+	employer?: { name: string; } | null;
+	work_format?: WorkFormat[];
+	area?: { name: string; } | null;
+	alternate_url: string;
+}
+
+// const ITEMS_PER_PAGE = 10;
 
 const VacancyList: React.FC = () => {
 	const dispatch = useTypedDispatch()
-	const { status, error, items, currentPage, filters } = useTypedSelector(state => state.vacancy)
+	const { items, status, error, totalPages, currentPage, filters } = useTypedSelector(state => state.vacancy);
 
 	useEffect(() => {
 		dispatch(vacancyFetch({ page: currentPage - 1, searchText: filters.searchText, searchCity: filters.searchCity }))
-	}, [dispatch, currentPage, filters])
+	}, [dispatch, currentPage, filters.searchCity, filters.searchText])
 
-	if (status === 'loading') {
-		return <div>Загрузка...</div>;
-	}
-
-	if (status === 'failed') {
-		return <div>Ошибка: {error}</div>;
-	}
-
-	console.log(items)
+	const onPageChange = (page: number) => {
+		dispatch(setCurrentPage(page));
+	};
 
 	return (
-		<div>
-			{/* {items.map(vacancy)} */}
-		</div>
+		<Box>
+			{status === 'loading' && <Loader color='cyan' size="xl" type="dots" />}
+			{status === 'failed' && <Text>{error}</Text>}
+			{status === 'succeeded' && items.length === 0 && <Text>Вакансии не найдены</Text>}
+			{status === 'succeeded' &&
+				items.map((vacancy: Vacancy) => (
+					<CardVacancy key={vacancy.id} vacancy={vacancy} />
+				))
+			}
+			{status === 'succeeded' && totalPages > 1 && (
+				<Pagination
+					total={totalPages}
+					value={currentPage}
+					onChange={onPageChange}
+					mt="md"
+					withEdges
+					siblings={1}
+					boundaries={1}
+				/>
+			)}
+		</Box>
 	);
+
 };
 
 export default VacancyList;
