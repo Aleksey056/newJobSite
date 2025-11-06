@@ -15,7 +15,7 @@ export const vacancyFetch = createAsyncThunk(
 
 			if (searchText) param.append('text', searchText)
 			if (searchCity && searchCity !== '') param.append('area', searchCity)
-			// if (searchSkills.length) param.append('___', searchSkills.join(',')) нет уже такого
+			// if (searchSkills) param.append('___', searchSkills.join(',')) не нашел как вытягивать
 
 			const url = `https://api.hh.ru/vacancies?${param.toString()}`
 
