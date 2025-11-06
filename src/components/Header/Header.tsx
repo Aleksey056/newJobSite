@@ -9,7 +9,7 @@ export default function Header() {
 		<Box className={styles.header}>
 			<Box className={styles.block1}>
 				<Box className={styles.header__logo}>
-					<Image className={styles.header__icon} src={logo} />
+					<Image className={styles.header__icon} src={logo} alt='logo'/>
 					<Text>
 						.FrontEnd
 					</Text>
@@ -23,7 +23,7 @@ export default function Header() {
 					<Image className={styles.ellipse} src={ellipse} />
 				</Box>
 				<Box className={styles.userInfo}>
-					<Image className={styles.userInfo__image} src={userLogo} />
+					<Image className={styles.userInfo__image} src={userLogo} alt='userLogo'/>
 					<Text className={styles.userInfo__text}>Обо мне</Text>
 				</Box>
 			</Box>
