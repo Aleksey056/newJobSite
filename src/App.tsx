@@ -8,7 +8,6 @@ import Skills from './components/Skils/Skils';
 import VacancyList from './components/VacancyList/VacancyList';
 
 function App() {
-
 	return (
 		<>
 			<Header />
@@ -24,7 +23,6 @@ function App() {
 				</Box>
 			</Box>
 		</>
-
 	)
 }
 export default App

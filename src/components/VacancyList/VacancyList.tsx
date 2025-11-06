@@ -3,22 +3,7 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { vacancyFetch, setCurrentPage } from '../../store/vacancySlice';
 import { Box, Loader, Pagination, Text } from '@mantine/core';
 import CardVacancy from '../VacancyCard/VacancyCard';
-
-export type WorkFormat = {
-	id: string | number;
-	name: string;
-}
-
-export type Vacancy = {
-	id: string | number;
-	name: string;
-	salary: | string | { from?: number; to?: number; currency?: string } | null;
-	experience: string | { name: string } | null;
-	employer?: { name: string; } | null;
-	work_format?: WorkFormat[];
-	area?: { name: string; } | null;
-	alternate_url: string;
-}
+import type { Vacancy } from '../../types/vacancy'
 
 const VacancyList = () => {
 	const dispatch = useTypedDispatch()

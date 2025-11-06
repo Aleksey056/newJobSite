@@ -1,16 +1,10 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-type vacancyFetchType = {
-	searchText?: string,
-	searchCity?: string,
-	searchSkills?: string[];
-	page: number,
-}
+import type { vacancyFetchType, initialStateType } from '../types/vacancy'
 
 export const vacancyFetch = createAsyncThunk(
 	'vacancy/vacancyFetch',
-	async ({ searchText = '', searchCity = '', searchSkills = [], page }: vacancyFetchType, { rejectWithValue }) => {
+	async ({ searchText = '', searchCity = '', page }: vacancyFetchType, { rejectWithValue }) => { // 
 		try {
 			const param = new URLSearchParams({
 				industry: '7',
@@ -21,14 +15,12 @@ export const vacancyFetch = createAsyncThunk(
 
 			if (searchText) param.append('text', searchText)
 			if (searchCity && searchCity !== '') param.append('area', searchCity)
-			if (searchSkills.length) param.append('skill_set', searchSkills.join(','))
+			// if (searchSkills.length) param.append('___', searchSkills.join(',')) нет уже такого
 
 			const url = `https://api.hh.ru/vacancies?${param.toString()}`
 
 			const response = await fetch(url);
-			if (!response.ok) {
-				throw new Error('Ошибка при получении данных с HH')
-			}
+			if (!response.ok) throw new Error('Ошибка при получении данных с HH')
 
 			const data = await response.json();
 			return data;
@@ -38,20 +30,6 @@ export const vacancyFetch = createAsyncThunk(
 		}
 	}
 )
-
-type initialStateType = {
-	items: [],
-	status: string,
-	error: null | string,
-	totalPages: number,
-	currentPage: number,
-	filters: {
-		searchText: string,
-		searchCity: string,
-		searchSkills: string[];
-	}
-
-}
 
 const initialState: initialStateType = {
 	items: [],
@@ -79,20 +57,19 @@ const vacancySlice = createSlice({
 		},
 	},
 	extraReducers: (builder) => {
-		builder
-			.addCase(vacancyFetch.pending, (state) => {
-				state.status = 'loading'
-				state.error = null
-			})
-			.addCase(vacancyFetch.fulfilled, (state, action) => {
-				state.items = action.payload.items
-				state.totalPages = action.payload.pages
-				state.status = 'succeeded'
-			})
-			.addCase(vacancyFetch.rejected, (state, action) => {
-				state.status = 'failed'
-				state.error = action.error.message || 'Ошибка в запросе данных с сервера'
-			})
+		builder.addCase(vacancyFetch.pending, (state) => {
+			state.status = 'loading'
+			state.error = null
+		})
+		builder.addCase(vacancyFetch.fulfilled, (state, action) => {
+			state.items = action.payload.items
+			state.totalPages = action.payload.pages
+			state.status = 'succeeded'
+		})
+		builder.addCase(vacancyFetch.rejected, (state, action) => {
+			state.status = 'failed'
+			state.error = action.error.message || 'Ошибка в запросе данных с сервера'
+		})
 	}
 })
 
