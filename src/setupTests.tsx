@@ -17,7 +17,8 @@ beforeAll(() => {
 	});
 });
 
-global.ResizeObserver = class {
+// global.ResizeObserver = class {
+ResizeObserver = class {
 	observe() { }
 	unobserve() { }
 	disconnect() { }
