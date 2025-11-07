@@ -1,7 +1,6 @@
 .moduleSkils {
 	background-color: #FFFFFF;
 	width: 317px;
-	height: 206px;
 	padding: 24px;
 	display: flex;
 	flex-direction: column;
@@ -11,7 +10,6 @@
 }
 
 .title {
-	/* font-family: Open Sans; */
 	font-weight: 600;
 	font-size: 14px;
 	height: 20px;

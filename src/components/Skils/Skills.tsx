@@ -35,7 +35,7 @@ const Skills = () => {
 	return (
 		<Box className={styles.moduleSkils}>
 			<Text className={styles.title}>Ключевые навыки</Text>
-			<Group>
+			<Group gap={8}>
 				<TextInput
 					radius="md"
 					w={215}
@@ -46,7 +46,7 @@ const Skills = () => {
 					onKeyDown={handleKeyDown}
 					data-testid='skillsInput'>
 				</TextInput>
-				<Button onClick={addSkills} className={styles.button} data-testid='buttonAddSkills'/>
+				<Button onClick={addSkills} className={styles.button} data-testid='buttonAddSkills' />
 			</Group>
 
 			<PillsInput variant="unstyled" >
@@ -55,6 +55,9 @@ const Skills = () => {
 						style={{ marginRight: 4, marginBottom: 6 }}
 						key={skill}
 						size='md'
+						fz={12}
+						fw={400}
+						ff={'Open Sans'}
 						withRemoveButton
 						onRemove={() => removeSkills(skill)}
 					>

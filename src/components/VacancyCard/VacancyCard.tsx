@@ -60,7 +60,7 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 			</Box>
 
 			<Box className={styles.buttonGroup}>
-				<Button variant="filled" size="sm" color="black">Смотреть вакансию</Button>
+				<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
 				<Button
 					size="sm"
 					variant="light"
@@ -68,6 +68,7 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 					component="a"
 					href={vacancy.alternate_url}
 					target="_blank"
+					fw={400}
 				>
 					Откликнуться
 				</Button>

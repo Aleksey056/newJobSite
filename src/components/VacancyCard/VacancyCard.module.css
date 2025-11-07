@@ -54,6 +54,7 @@
 .buttonGroup {
 	display: flex;
 	gap: 12px;
+	font-family: Open Syns, sans-serif;
 }
 
 .info__workFormat {
