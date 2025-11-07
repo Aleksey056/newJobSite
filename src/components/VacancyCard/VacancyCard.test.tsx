@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { MantineProvider } from '@mantine/core';
-import VacancyCard from '../VacancyCard/VacancyCard';
+import VacancyCard from './VacancyCard';
 
 const renderWithMantineProvider = (component: React.ReactNode) =>
 	render(<MantineProvider>{component}</MantineProvider>);

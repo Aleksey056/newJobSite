@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi, beforeAll } from 'vitest';
-import Skills from '../Skils/Skills';
+import Skills from './Skills';
 import { MantineProvider } from '@mantine/core';
 import { useTypedSelector } from '../../hooks/redux';
 
