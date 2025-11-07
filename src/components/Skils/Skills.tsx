@@ -43,9 +43,10 @@ const Skills = () => {
 					placeholder="Навык"
 					value={inputValue}
 					onChange={(e) => setInputValue(e.currentTarget.value)}
-					onKeyDown={handleKeyDown}>
+					onKeyDown={handleKeyDown}
+					data-testid='skillsInput'>
 				</TextInput>
-				<Button onClick={addSkills} className={styles.button} />
+				<Button onClick={addSkills} className={styles.button} data-testid='buttonAddSkills'/>
 			</Group>
 
 			<PillsInput variant="unstyled" >
