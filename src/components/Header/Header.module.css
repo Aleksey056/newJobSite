@@ -24,6 +24,10 @@
 	height: 30px;
 }
 
+.text {
+	font-weight: 600;
+}
+
 .block2 {
 	display: flex;
 	gap: 24px;
@@ -36,7 +40,6 @@
 }
 
 .jobs__text {
-	font-family: Open Sans;
 	font-weight: 500;
 	font-size: 14px;
 }
@@ -60,9 +63,6 @@
 }
 
 .userInfo__text {
-	width: 60;
-	height: 22;
-	font-family: Open Sans;
 	font-weight: 500;
 	font-size: 14px;
 	color: #0F0F1080

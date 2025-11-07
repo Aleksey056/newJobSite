@@ -14,7 +14,7 @@
 }
 
 .section1__text1 {
-	font-family: Open Sans;
+	/* font-family: Open Sans; */
 	font-weight: 700;
 	font-size: 26px;
 	height: 35px;
@@ -22,7 +22,7 @@
 
 .section1__text2 {
 	color: #0F0F1080;
-	font-family: Open Sans;
+	/* font-family: Open Sans; */
 	font-weight: 500;
 	font-size: 20px;
 	height: 27px;

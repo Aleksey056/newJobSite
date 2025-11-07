@@ -7,10 +7,10 @@ import styles from './Header.module.css'
 export default function Header() {
 	return (
 		<Box className={styles.header}>
-			<Box className={styles.block1}>
+			<Box>
 				<Box className={styles.header__logo}>
-					<Image className={styles.header__icon} src={logo} alt='logo'/>
-					<Text>
+					<Image className={styles.header__icon} src={logo} alt='logo' />
+					<Text className={styles.text}>
 						.FrontEnd
 					</Text>
 				</Box>
@@ -23,7 +23,7 @@ export default function Header() {
 					<Image className={styles.ellipse} src={ellipse} />
 				</Box>
 				<Box className={styles.userInfo}>
-					<Image className={styles.userInfo__image} src={userLogo} alt='userLogo'/>
+					<Image className={styles.userInfo__image} src={userLogo} alt='userLogo' />
 					<Text className={styles.userInfo__text}>Обо мне</Text>
 				</Box>
 			</Box>

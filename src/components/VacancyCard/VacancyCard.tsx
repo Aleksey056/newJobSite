@@ -20,11 +20,11 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 		if (!formats || formats.length === 0) return null;
 		return formats.map(format => {
 			if (format.id === 'ON_SITE')
-				return <Badge color="rgba(15, 15, 16, 0.5)" variant="light" key="on" radius='xs' size='sm'>офис</Badge>;
+				return <Badge color="rgba(15, 15, 16, 0.5)" variant="light" key="on" radius='xs' size='sm' fw={700} fz={9}>офис</Badge>;
 			if (format.id === 'REMOTE')
-				return <Badge color="rgba(66, 99, 235, 1)" key="remote" radius='xs' size='sm' >можно удалённо</Badge>;
+				return <Badge color="rgba(66, 99, 235, 1)" key="remote" radius='xs' size='sm' fw={700} fz={9} className={styles.bagde}>можно удалённо</Badge>;
 			if (format.id === 'HYBRID')
-				return <Badge color="black" key="hybrid" radius='xs' size='sm'>гибрид</Badge>;
+				return <Badge color="black" key="hybrid" radius='xs' size='sm' fw={700} fz={9} className={styles.bagde}>гибрид</Badge>;
 			return null;
 		});
 	};

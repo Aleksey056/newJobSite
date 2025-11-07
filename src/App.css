@@ -3,12 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	background-color: #F3F5FA;
-}
-
-body {
-	font-family: 'Inter', sans-serif;
-	color: #000;
-	line-height: 1.5;
+	font-family: Open Sans, sans-serif;
 }
 
 .main {
@@ -25,5 +20,3 @@ body {
 	flex-direction: column;
 	gap: 12px;
 }
-
-/* .main__right-section {} */
