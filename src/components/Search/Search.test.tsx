@@ -5,7 +5,7 @@ import vacancyReducer from '../../store/vacancySlice';
 import Search from './Search';
 import { describe, expect, it } from 'vitest';
 import { MantineProvider } from '@mantine/core';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 
 const store = configureStore({
 	reducer: { vacancy: vacancyReducer },
@@ -25,28 +25,31 @@ describe('Search component', () => {
 		renderWithProvider(<Search />)
 		expect(screen.getByText(/Список вакансий/i)).toBeInTheDocument();
 		expect(screen.getByPlaceholderText(/Должность или название компании/i)).toBeInTheDocument();
-		// screen.debug()
 	});
 
-	// it('dispatches setFilters on city change', async () => {
-	// 	renderWithProvider(<CitySelect />);
+	it('изменение searchText в store после задания текста и отправки', async () => {
+		renderWithProvider(<Search />);
 
+		const userClick = userEvent.click
+		const userAddText = userEvent.type
 
-	// 	const resultSelectInput = screen.getByTestId('citySelectInput');
-	// 	expect(resultSelectInput).toHaveValue('Все города');
+		const searchInput = screen.getByTestId('searchInput')
+		await userClick(searchInput)
+		await userAddText(searchInput, 'Привет')
+		// const resultSelectInput = screen.getByTestId('citySelectInput');
+		// expect(resultSelectInput).toHaveValue('Все города');
 
-	// 	const userClick = userEvent.click
+		// const cityMoscow = screen.getByText('Москва');
+		// await userClick(cityMoscow);
+		// expect(resultSelectInput).toHaveValue('Москва');
+		// const state = store.getState().vacancy.filters;
+		// expect(state.searchCity).toBe('1');
 
-	// 	const cityMoscow = screen.getByText('Москва');
-	// 	await userClick(cityMoscow);
-	// 	expect(resultSelectInput).toHaveValue('Москва');
-	// 	const state = store.getState().vacancy.filters;
-	// 	expect(state.searchCity).toBe('1');
-
-	// 	const cityOrenburg = screen.getByText('Оренбург');
-	// 	await userClick(cityOrenburg);
-	// 	expect(resultSelectInput).toHaveValue('Оренбург');
-	// 	const newState = store.getState().vacancy.filters;
-	// 	expect(newState.searchCity).toBe('70');
-	// });
+		// const cityOrenburg = screen.getByText('Оренбург');
+		// await userClick(cityOrenburg);
+		// expect(resultSelectInput).toHaveValue('Оренбург');
+		// const newState = store.getState().vacancy.filters;
+		// expect(newState.searchCity).toBe('70');
+		screen.debug()
+	});
 });

@@ -36,7 +36,8 @@ const Search = () => {
 					onChange={(e) => setText(e.target.value)}
 					className={styles.search__input}
 					onKeyDown={handleKeyDown}
-					leftSection={<Image src={iconSearch} className={styles.iconSearch} />}
+					leftSection={<Image src={iconSearch} className={styles.iconSearch} 
+					data-testid='searchInput'/>}
 				/>
 				<Button type='submit' onClick={() => setSearchText(text)} className={styles.section1__button}>
 					Найти
