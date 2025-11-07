@@ -27,7 +27,7 @@ describe('Search component', () => {
 		expect(screen.getByPlaceholderText(/Должность или название компании/i)).toBeInTheDocument();
 	});
 
-	it('изменение searchText в store после задания текста и отправки', async () => {
+	it('изменение searchText в store при изменение в компоненте Search', async () => {
 		renderWithProvider(<Search />);
 
 		const userClick = userEvent.click

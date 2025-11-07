@@ -29,7 +29,7 @@ describe('CitySelect component', () => {
 		expect(screen.getByText(/Оренбург/i)).toBeInTheDocument();
 	});
 
-	it('изменение в store при изменение в компоненте CitySelect', async () => {
+	it('изменение searchCity в store при изменение в компоненте CitySelect', async () => {
 		renderWithProvider(<CitySelect />);
 
 		const userClick = userEvent.click
