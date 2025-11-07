@@ -10,5 +10,5 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: './src/setupTests.tsx',
 	},
-	base: '/VegaStore'
+	base: '/newJobSite'
 })
