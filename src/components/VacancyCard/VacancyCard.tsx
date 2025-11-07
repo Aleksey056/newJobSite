@@ -68,7 +68,6 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 					component="a"
 					href={vacancy.alternate_url}
 					target="_blank"
-					rel="noopener noreferrer"
 				>
 					Откликнуться
 				</Button>
