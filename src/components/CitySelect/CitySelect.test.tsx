@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import vacancyReducer from '../../store/vacancySlice';
-import CitySelect from './CitySelect';
 import { describe, expect, it } from 'vitest';
+import CitySelect from './CitySelect';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import { MantineProvider } from '@mantine/core';
+import vacancyReducer from '../../store/vacancySlice';
 import userEvent from '@testing-library/user-event';
 
 const store = configureStore({
@@ -21,7 +21,7 @@ const renderWithProvider = (component: React.ReactNode) =>
 	)
 
 describe('CitySelect component', () => {
-	it('renders select with city options', () => {
+	it('рендер компонента со списком', () => {
 		renderWithProvider(<CitySelect />)
 		expect(screen.getByPlaceholderText(/выберете вариант/i)).toBeInTheDocument();
 		expect(screen.getByText(/Все города/i)).toBeInTheDocument();
@@ -29,14 +29,13 @@ describe('CitySelect component', () => {
 		expect(screen.getByText(/Оренбург/i)).toBeInTheDocument();
 	});
 
-	it('dispatches setFilters on city change', async () => {
+	it('изменение в store при изменение в компоненте CitySelect', async () => {
 		renderWithProvider(<CitySelect />);
-		
-
-		const resultSelectInput = screen.getByTestId('citySelectInput');
-		expect(resultSelectInput).toHaveValue('Все города');
 
 		const userClick = userEvent.click
+	
+		const resultSelectInput = screen.getByTestId('citySelectInput');
+		expect(resultSelectInput).toHaveValue('Все города');
 
 		const cityMoscow = screen.getByText('Москва');
 		await userClick(cityMoscow);
