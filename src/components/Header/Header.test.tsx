@@ -7,7 +7,7 @@ const renderWithMantineProvider = (component: React.ReactNode) =>
 	render(<MantineProvider>{component}</MantineProvider>);
 
 describe('Header component', () => {
-	it('рендерится без ошибок', () => {
+	it('рендерится', () => {
 		renderWithMantineProvider(<Header />);
 		expect(screen.getByText('.FrontEnd')).toBeInTheDocument();
 		expect(screen.getByText('Вакансии FE')).toBeInTheDocument();

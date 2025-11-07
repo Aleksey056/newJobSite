@@ -35,21 +35,13 @@ describe('Search component', () => {
 
 		const searchInput = screen.getByTestId('searchInput')
 		await userClick(searchInput)
-		await userAddText(searchInput, 'Привет')
-		// const resultSelectInput = screen.getByTestId('citySelectInput');
-		// expect(resultSelectInput).toHaveValue('Все города');
+		await userAddText(searchInput, 'React')
+		expect(searchInput).toHaveValue('React');
 
-		// const cityMoscow = screen.getByText('Москва');
-		// await userClick(cityMoscow);
-		// expect(resultSelectInput).toHaveValue('Москва');
-		// const state = store.getState().vacancy.filters;
-		// expect(state.searchCity).toBe('1');
+		const button = screen.getByTestId('button')
+		await userClick(button);
 
-		// const cityOrenburg = screen.getByText('Оренбург');
-		// await userClick(cityOrenburg);
-		// expect(resultSelectInput).toHaveValue('Оренбург');
-		// const newState = store.getState().vacancy.filters;
-		// expect(newState.searchCity).toBe('70');
-		screen.debug()
+		const state = store.getState().vacancy.filters;
+		expect(state.searchText).toBe('React');
 	});
 });

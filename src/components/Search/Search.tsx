@@ -16,9 +16,7 @@ const Search = () => {
 	}
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		if (e.key === 'Enter') {
-			setSearchText(text);
-		}
+		if (e.key === 'Enter') setSearchText(text);
 	};
 
 	return (
@@ -36,10 +34,10 @@ const Search = () => {
 					onChange={(e) => setText(e.target.value)}
 					className={styles.search__input}
 					onKeyDown={handleKeyDown}
-					leftSection={<Image src={iconSearch} className={styles.iconSearch} 
-					data-testid='searchInput'/>}
+					data-testid='searchInput'
+					leftSection={<Image src={iconSearch} className={styles.iconSearch} alt='iconSearch'/>}
 				/>
-				<Button type='submit' onClick={() => setSearchText(text)} className={styles.section1__button}>
+				<Button type='submit' onClick={() => setSearchText(text)} className={styles.section1__button} data-testid='button'>
 					Найти
 				</Button>
 			</Box>
