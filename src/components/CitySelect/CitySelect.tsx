@@ -33,6 +33,7 @@ const CitySelect = () => {
 			value={searchCity}
 			onChange={setSearchCity}
 			className={styles.moduleCitySelector}
+			data-testid='citySelectInput'
 		/>
 	);
 };
